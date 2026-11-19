@@ -2,9 +2,9 @@
 
 ## Right now
 
-- ✅ **did (2026-11-19):** text now arrives grey and darkens to black as it scrolls up into reading position, then stays black (Ed asked). Committed locally, build marker `2026-11-19.2`. The page itself is live at concede.edtsue.com (build `.1`).
-- ❗ **waiting on you:** a look on localhost, then the OK to push (1 push, 1 host build).
-- ➡️ **next:** after the push, check the live page shows build `2026-11-19.2`; confirm the POV card on edtsue.com is live (other repo, not checked yet).
+- ✅ **did (2026-11-19):** text now arrives grey and darkens to black as it scrolls up into reading position, then stays black (Ed asked). LIVE at concede.edtsue.com: build `2026-11-19.2` (commit 623f2a5) confirmed on the live page.
+- ❗ **waiting on you:** nothing.
+- ➡️ **next:** confirm the POV card on edtsue.com is live (other repo, not checked yet).
 - ⚠️ **worth knowing:** the animations only play in browsers that support scroll-driven animation; everywhere else the page simply appears, in full black. Nothing is ever hidden.
 - 🗂 **where:** `index.html` (the words), `docs/essay.md` (the final copy they must match), `styles.css` (look and motion).
 
