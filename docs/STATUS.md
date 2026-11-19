@@ -2,10 +2,10 @@
 
 ## Right now
 
-- ✅ **did:** built the essay page (mockup A: same look as the agency2035 essay, the Magritte-style painting, three pull quotes, four subtle animations), tests passing locally.
-- ❗ **waiting on you:** the first push, then the host project and the domain — see the latest chat for the steps.
-- ➡️ **next:** live check of concede.edtsue.com; the POV card on edtsue.com goes live in the same round.
-- ⚠️ **worth knowing:** the animations only play in browsers that support scroll-driven animation; everywhere else the page simply appears. Nothing is ever hidden.
+- ✅ **did (2026-11-19):** text now arrives grey and darkens to black as it scrolls up into reading position, then stays black (Ed asked). Committed locally, build marker `2026-11-19.2`. The page itself is live at concede.edtsue.com (build `.1`).
+- ❗ **waiting on you:** a look on localhost, then the OK to push (1 push, 1 host build).
+- ➡️ **next:** after the push, check the live page shows build `2026-11-19.2`; confirm the POV card on edtsue.com is live (other repo, not checked yet).
+- ⚠️ **worth knowing:** the animations only play in browsers that support scroll-driven animation; everywhere else the page simply appears, in full black. Nothing is ever hidden.
 - 🗂 **where:** `index.html` (the words), `docs/essay.md` (the final copy they must match), `styles.css` (look and motion).
 
 ---
@@ -22,6 +22,11 @@
   fading read text out (gets in the way of re-reading), word-by-word headline
   (gimmicky), a face-to-back-of-head mirror crossfade (needs a second image,
   most readers would miss it).
+- **Motion 5, added later the same day: grey to black.** Each paragraph starts
+  half ink, half paper (3.32:1 light, 4.63:1 dark) and is full ink once it has
+  risen min(30vh, 260px) above the bottom of the screen. Read text stays black, so
+  fading read text *out* is still ruled out. The 260px cap keeps the last line
+  able to finish on tall screens, checked headless at 800px and 1600px tall.
 - **Motion built in CSS only** (scroll-driven animations behind a feature check),
   with no script fallback: it is decorative, so older browsers get the plain page.
 - **Header image:** generated 2026-11-19, "after Magritte, *La reproduction
