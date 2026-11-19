@@ -165,19 +165,21 @@ a { color: inherit; }
        and darken to full ink as they climb into reading position (ink-up), and
        stay dark. Each paragraph has two animations, so every animation-range below
        lists two ranges: rise-in first, then ink-up.
-       The grey is half ink, half paper: 3.32:1 light, 4.63:1 dark, so it stays
-       readable. Full ink is 15.98:1. The text is fully dark once it has risen
-       min(30vh, 260px) above the bottom of the screen. That cap keeps it inside
-       the ~450px of page below the last line, so even the last line can get there. */
+       The start is deliberately faint, 20% ink to 80% paper: 1.52:1 light, 1.77:1
+       dark. Ed asked for a fade you can see (2026-11-19); a 50% start read as no
+       fade at all. Text is full ink (15.98:1) once it has risen min(45vh, 400px)
+       above the bottom of the screen, about mid-screen, before it is read. The
+       400px cap keeps it inside the ~450px of page below the last line, so even
+       the last line can finish (checked headless from 760px to 1600px tall). */
     @keyframes ink-up {
-      from { color: color-mix(in srgb, var(--ink-to) 50%, var(--paper)); }
+      from { color: color-mix(in srgb, var(--ink-to) 20%, var(--paper)); }
       to   { color: var(--ink-to); }
     }
     .body p {
       --ink-to: var(--ink);
       animation: rise-in auto ease-out backwards, ink-up auto linear backwards;
       animation-timeline: view(), view();
-      animation-range: entry 0% entry 90%, entry 0% contain min(30vh, 260px);
+      animation-range: entry 0% entry 90%, entry 0% contain min(45vh, 400px);
     }
     .body .pull.last { --ink-to: var(--claret); }
 
@@ -189,7 +191,7 @@ a { color: inherit; }
     /* 3 · the bar beside each big line draws itself, then the words arrive */
     .body .pull {
       view-timeline: --pull;
-      animation-range: entry 40% entry 100%, entry 40% contain min(30vh, 260px);
+      animation-range: entry 40% entry 100%, entry 40% contain min(45vh, 400px);
     }
     .body .pull::before {
       animation: draw-down auto ease-out backwards;
@@ -198,7 +200,7 @@ a { color: inherit; }
     }
 
     /* 4 · the last line waits, then lands later than everything else */
-    .body .pull.last { animation-range: entry 90% contain 10%, entry 90% contain min(30vh, 260px); }
+    .body .pull.last { animation-range: entry 90% contain 10%, entry 90% contain min(45vh, 400px); }
     .body .pull.last::before { animation-range: entry 20% entry 100%; }
   }
 }
