@@ -1,0 +1,10 @@
+{
+  "name": "concede",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --experimental-strip-types --conditions=react-server --test test/*.test.js test/*.test.ts",
+    "dev": "python3 -m http.server 5173"
+  }
+}

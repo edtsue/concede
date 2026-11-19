@@ -1,0 +1,9 @@
+# The host serves this repo's root as the site. Everything below is repo
+# plumbing, not the page, and must never be a public URL.
+README.md
+docs
+test
+package.json
+package-lock.json
+node_modules
+.gitignore
