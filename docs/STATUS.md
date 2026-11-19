@@ -2,11 +2,11 @@
 
 ## Right now
 
-- ✅ **did (2026-11-19):** grey-to-black made stronger after Ed saw too little fade on build `.2`: starts much paler and reaches black about mid-screen. LIVE: build `2026-11-19.3` (commit 45c40ea) confirmed on concede.edtsue.com, page and stylesheet.
-- ❗ **waiting on you:** nothing.
-- ➡️ **next:** confirm the POV card on edtsue.com is live (other repo, not checked yet).
-- ⚠️ **worth knowing:** the animations only play in browsers that support scroll-driven animation; everywhere else the page simply appears, in full black. Nothing is ever hidden.
-- 🗂 **where:** `index.html` (the words), `docs/essay.md` (the final copy they must match), `styles.css` (look and motion).
+- ✅ **did (2026-11-19):** end fade — once the reader reaches the bottom with the last line in view, everything else fades to 12% and "And to that cost, I concede." stands alone; scrolling up brings it all back. Checked headless at 5 sizes, light and dark. Build `2026-11-19.4`, committed, NOT pushed.
+- ❗ **waiting on you:** say "push" — 2 commits, 1 host project, 1 build.
+- ➡️ **next:** after the push, confirm build `.4` is live; then check the POV card on edtsue.com (other repo).
+- ⚠️ **worth knowing:** on a phone held sideways the last line can't fit on screen at the page bottom, so the fade doesn't happen there (on purpose: fading with the last line off-screen would leave nothing to read). Readers who ask for reduced motion don't get the fade.
+- 🗂 **where:** `index.html` (the words), `docs/essay.md` (the final copy they must match), `styles.css` (look and motion), `app.js` (sets the end state).
 
 ---
 
@@ -29,7 +29,15 @@
   the last line able to finish, checked headless from 760px to 1600px tall.
   Ruled out: the first version (50% start, black by 260px up) showed almost no
   fade, because text was black long before the reader reached it.
-- **Motion built in CSS only** (scroll-driven animations behind a feature check),
+- **Motion 6, added 2026-11-19: the end fade.** At the page bottom, with the last
+  line visible below the masthead, everything except the last line fades to 12%
+  opacity over 1.4s; scroll up and it returns. The More card comes back on hover or
+  Tab. **This deliberately reverses "fading read text out is ruled out"** — Ed asked
+  for it; it only happens at the very end and undoes on scroll-up, so re-reading is
+  unharmed. A small script (app.js) sets the state, since CSS alone cannot tell
+  "reached the end". Ruled out: triggering on page bottom alone — on a short
+  screen it faded everything with the last line off-screen.
+- **Motions 1–5 built in CSS only** (scroll-driven animations behind a feature check),
   with no script fallback: it is decorative, so older browsers get the plain page.
 - **Header image:** generated 2026-11-19, "after Magritte, *La reproduction
   interdite*". The originals and every earlier mockup are in

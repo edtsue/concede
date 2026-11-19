@@ -2,15 +2,25 @@
 const root = document.documentElement;
 
 const bar = document.getElementById('progress-bar');
+const lastLine = document.querySelector('.pull.last');
+const masthead = document.querySelector('.masthead');
 let queued = false;
+// "at-end": the reader has reached the bottom of the page AND can see the last
+// line below the sticky masthead. The stylesheet then fades everything else, so
+// "And to that cost, I concede." stands alone. Scrolling back up undoes it.
+// The visibility half matters on short screens (a landscape phone), where the
+// page bottom can sit below the last line and would otherwise fade to nothing.
 function paintProgress() {
   queued = false;
   const max = root.scrollHeight - root.clientHeight;
   bar.style.transform = `scaleX(${max > 0 ? Math.min(1, root.scrollTop / max) : 0})`;
+  const box = lastLine.getBoundingClientRect();
+  const seen = box.top >= masthead.getBoundingClientRect().bottom && box.bottom <= innerHeight;
+  root.classList.toggle('at-end', max > 0 && max - root.scrollTop <= 48 && seen);
 }
-addEventListener('scroll', () => {
-  if (!queued) { queued = true; requestAnimationFrame(paintProgress); }
-}, { passive: true });
+const queue = () => { if (!queued) { queued = true; requestAnimationFrame(paintProgress); } };
+addEventListener('scroll', queue, { passive: true });
+addEventListener('resize', queue);
 paintProgress();
 
 const isDark = () => root.dataset.theme

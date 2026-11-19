@@ -151,7 +151,8 @@ a { color: inherit; }
 
 /* ---------- motion: decorative only, so it is progressive enhancement ----------
    Nothing here hides text in a browser that cannot animate it, and nothing runs
-   for a reader who asked for reduced motion. */
+   for a reader who asked for reduced motion. The one exception is 6, which fades
+   read text on purpose at the very end. */
 @media (prefers-reduced-motion: no-preference) {
   /* 2 · the painting fades up on arrival, like gallery lights */
   @keyframes lights-up { from { opacity: 0; } }
@@ -203,6 +204,22 @@ a { color: inherit; }
     .body .pull.last { animation-range: entry 90% contain 10%, entry 90% contain min(45vh, 400px); }
     .body .pull.last::before { animation-range: entry 20% entry 100%; }
   }
+
+  /* 6 · at the end, everything steps back except the last line. app.js sets
+     .at-end on <html> once the reader reaches the bottom with the last line in
+     view; scrolling up removes it and the text returns. Read text DOES fade
+     here: Ed asked for it (2026-11-19), reversing the earlier "never fade read
+     text out", because it only happens at the very end and undoes on scroll-up.
+     Opacity goes on the last line's siblings, never on a parent of it, or the
+     last line would fade too. Reduced-motion readers get none of this. */
+  .headline-block, .hero-figure, .body > p, .sep, .disclaimer, .more {
+    transition: opacity 1.4s ease;
+  }
+  .at-end :is(.headline-block, .hero-figure, .body > p:not(.last), .sep, .disclaimer, .more) {
+    opacity: .12;
+  }
+  /* the way out stays usable: the More card comes back under the pointer or Tab */
+  .at-end .more:is(:hover, :focus-within) { opacity: 1; transition-duration: .2s; }
 }
 
 /* ---------- the way back to every other essay (the POV section on edtsue.com) ---------- */
