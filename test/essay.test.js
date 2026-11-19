@@ -47,3 +47,7 @@ test('nothing outside the page is published', () => {
     assert.ok(ignored.includes(p), `${p} would be a public URL — add it to .vercelignore`);
   }
 });
+
+test('every essay links back to the library: the POV section on edtsue.com', () => {
+  assert.match(page, /<nav class="more"[\s\S]*?href="https:\/\/edtsue\.com\/#blog"/);
+});
