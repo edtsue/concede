@@ -2,8 +2,8 @@
 
 ## Right now
 
-- ✅ **did (2026-11-19):** grey-to-black made stronger after Ed saw too little fade on build `.2`: starts much paler and reaches black about mid-screen. Committed locally as build `2026-11-19.3`; live is still `.2`.
-- ❗ **waiting on you:** a look on localhost, then the OK to push (1 push, 1 host build).
+- ✅ **did (2026-11-19):** grey-to-black made stronger after Ed saw too little fade on build `.2`: starts much paler and reaches black about mid-screen. LIVE: build `2026-11-19.3` (commit 45c40ea) confirmed on concede.edtsue.com, page and stylesheet.
+- ❗ **waiting on you:** nothing.
 - ➡️ **next:** confirm the POV card on edtsue.com is live (other repo, not checked yet).
 - ⚠️ **worth knowing:** the animations only play in browsers that support scroll-driven animation; everywhere else the page simply appears, in full black. Nothing is ever hidden.
 - 🗂 **where:** `index.html` (the words), `docs/essay.md` (the final copy they must match), `styles.css` (look and motion).
